@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://js.cx/test/libs.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+
+        var salaries = {
+            "Вася": 100,
+            "Петя": 300,
+            "Даша": 250
+        };
+        var max = 0;
+        var maxSalaries = "";
+        for (var name in salaries) {
+            if (max < salaries[name]) {
+                max = salaries[name];
+                maxSalaries = name;
+            }
+        }
+        alert(maxSalaries || "Нет сотрудника");
+
+        // ... ваш код выведет "Петя"
+    </script>
+
+</body>
+
+</html>
