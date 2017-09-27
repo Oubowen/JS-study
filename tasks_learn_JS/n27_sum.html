@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+      var numbers = [ ];
+      
+      while (true) {
+      
+      var number = prompt("Введите число","0");
+      if (number === "" || number === null || isNaN(number)) break; 
+
+      numbers.push( +number); //цикл наполняет  массив
+      }
+        
+      var sum = 0;
+      for (var i = 0; i < numbers.length; i++) {
+          sum += numbers[i];
+      } // цикл для получения суммы
+      
+      alert (sum);
+  </script>
+
+</body>
+</html>
