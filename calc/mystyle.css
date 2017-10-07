@@ -13,3 +13,9 @@ strong {
         color: #20B2AA;
 
 }
+.entry-field{
+	width: 900px;
+	height:200px;
+	font-size: 30px;
+	background-color:  #0E8175;
+}
