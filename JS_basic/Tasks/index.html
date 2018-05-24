@@ -1,12 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.fillRect(10,10,185,250);
+
+        ctx.fillStyle = "rgba(0,0,200, 0.5)";
+        ctx.fillRect(70,70,185,250);
+
+        ctx.fillStyle = "orange";
+        ctx.strokeRect(280, 150, 29, 29);
+
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.moveTo(350, 50);
+        ctx.lineTo(150, 75);
+        ctx.lineTo(120, 25);
+        ctx.fill();
+
+
+        ctx.fillStyle = 'yellow'
+        ctx.beginPath();
+        ctx.arc(75,75,50,0,Math.PI*2,true); // Внешняя окружность
+        ctx.moveTo(110,75);
+        ctx.arc(75,75,35,0,Math.PI,false);  // рот (по часовой стрелке)
+        ctx.moveTo(65,65);
+        ctx.arc(60,65,5,0,Math.PI*2,true);  // Левый глаз
+        ctx.moveTo(95,65);
+        ctx.arc(90,65,5,0,Math.PI*2,true);  // Правый глаз
+        ctx.stroke();
+
+
+   //обьекты 2D!!
+        var rectangle = new Path2D();
+        rectangle.rect(510, 150, 50,50);
+
+        var circle = new Path2D();
+        circle.moveTo(325, 35);
+        circle.arc(430, 235, 45, 0, 2 * Math.PI);
+
+        ctx.stroke(rectangle);
+        ctx.fill(rectangle);
+        ctx.fillStyle = "lightseagreen";
+        ctx.fill(circle);
+
+
+
+       //палитра квадратов
+        var ctx = document.getElementById('canvas').getContext('2d');
+        for (var i=0;i<8;i++){
+          for (var j=0;j<8;j++){
+            ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
+                       Math.floor(255-42.5*j) + ',0)';
+        ctx.fillRect(j*25+500,i*25+500,25,25);
+          }
+        }
+
+       //подложка под круги
+        ctx.fillStyle = "cyan";
+        ctx.fillRect(0,390,235,250);
+
+
+     //палитра кругов
+        var ctx = document.getElementById('canvas').getContext('2d');
+        for (var i=0;i<9;i++){
+          for (var j=0;j<9;j++){
+        ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' +
+                         Math.floor(255-42.5*j) + ')';
+        ctx.beginPath();
+        ctx.arc(12.5+j*25,412.5+i*25,10,0,Math.PI*2,true);
+        ctx.stroke();
+          }
+        }
+
+
+         //круги полупрозрачные
+         // фон изображения
+         ctx.fillStyle = '#FD0';
+         ctx.fillRect(0+590,0,75,75);
+         ctx.fillStyle = '#6C0';
+         ctx.fillRect(75+590,0,75,75);
+         ctx.fillStyle = '#09F';
+         ctx.fillRect(0+590,75,75,75);
+         ctx.fillStyle = '#F30';
+         ctx.fillRect(75+590,75,75,75);
+         ctx.fillStyle = '#FFF';
+
+          // устанавливаем значение прозрачности
+         ctx.globalAlpha = 0.3;
+
+          // Рисуем полупрозрачные круги
+         for (i=0;i<7;i++){
+           ctx.beginPath();
+           ctx.arc(75+590,75,10+10*i,0,Math.PI*2,true);
+           ctx.fill();
+         }
+
+
+
+         ctx.globalAlpha = 1;
+         // Нарисовать фон
+         ctx.fillStyle = 'rgb(255,221,0)';
+         ctx.fillRect(0+250,0+590,150,37.5);
+         ctx.fillStyle = 'rgb(102,204,0)';
+         ctx.fillRect(0+250,37.5+590,150,37.5);
+         ctx.fillStyle = 'rgb(0,153,255)';
+         ctx.fillRect(0+250,75+590,150,37.5);
+         ctx.fillStyle = 'rgb(255,51,0)';
+         ctx.fillRect(0+250,112.5+590,150,37.5);
+
+         // Нарисовать полупрозрачные прямоугольники
+         for (var i=0;i<10;i++){
+           ctx.fillStyle = 'rgba(255,255,255,'+(i+1)/10+')';
+           for (var j=0;j<4;j++){
+             ctx.fillRect(5+i*14+250,5+j*37.5+590,14,27.5);
+           }
+         }
+
+         //полоски
+         ctx.strokeStyle = "crimson"
+         var ctx = document.getElementById('canvas').getContext('2d');
+         for (var i = 0; i < 10; i++){
+           ctx.lineWidth = 1+i;
+           ctx.beginPath();
+           ctx.moveTo(5+i*14+300,5+280);
+           ctx.lineTo(5+i*14+300,140+280);
+           ctx.stroke();
+         }
+
+         //обои
+         ctx.globalAlpha = 0.4;
+         var img = new Image();
+         img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
+         img.onload = function(){
+
+           // create pattern
+           var ptrn = ctx.createPattern(img,'repeat');
+           ctx.fillStyle = ptrn;
+           ctx.fillRect(250,0,250,250);
+
+         }
+
+
+
+      }
+    }
+  </script>
 </head>
-<body>
-  <script src="task1.js"></script>
+<body onload="draw();">
+  <canvas id="canvas" width="1050" height="850" style="border: 1px solid black"></canvas>
+
 </body>
 </html>
